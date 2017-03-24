@@ -17,7 +17,8 @@ defmodule PlugEx.Mixfile do
     # Specify extra applications you'll use from Erlang/Elixir
     [
       extra_applications: [:logger, :cowboy, :plug],
-      mod: {PlugEx, []}
+      mod: {PlugEx, []},
+      env: [cowboy_port: 8000],
     ]
   end
 
