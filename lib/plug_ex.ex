@@ -1,18 +1,14 @@
 defmodule PlugEx do
-  @moduledoc """
-  Documentation for PlugEx.
-  """
+  use Application
+  require Logger
 
-  @doc """
-  Hello world.
+  def start(_type, _args) do
+    children = [
+      Plug.Adapters.Cowboy.child_spec(:http, PlugEx.Router, [], port: 8000)
+    ]
 
-  ## Examples
+    Logger.info "App Started!"
 
-      iex> PlugEx.hello
-      :world
-
-  """
-  def hello do
-    :world
+    Supervisor.start_link(children, strategy: :one_for_one)
   end
 end

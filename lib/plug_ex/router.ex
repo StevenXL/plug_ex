@@ -5,7 +5,7 @@ defmodule PlugEx.Router do
   plug :dispatch
 
   get "/" do
-    send_resp(conn, 200, "Hello world!"
+    send_resp(conn, 200, "Hello world!")
   end
 
   match _, do: send_resp(conn, 404, "Ah hell nah!")
